@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+/*　inview
+----------------------------------------------- */
+//下から上
+.act-view01 {
+  position: relative;
+  top: 50px;
+  opacity: 0;
+  transition: .8s;
+
+  &.fadeInDown {
+    top: 0;
+    opacity: 1;
+    transition: .8s;
+    transition-delay: 0.3s;
+    transition-timing-function: ease-out;
+  }
+}
+
+//左から右
+.act-view02 {
+  position: relative;
+  right: 50px;
+  opacity: 0;
+  transition: .8s;
+
+  &.fadeInLeft {
+    right: 0;
+    opacity: 1;
+    transition: .8s;
+    transition-delay: 0.3s;
+    transition-timing-function: ease-out;
+  }
+}
+
+//右から左
+.act-view03 {
+  position: relative;
+  left: 50px;
+  opacity: 0;
+  transition: .8s;
+
+  &.fadeInRight {
+    left: 0;
+    opacity: 1;
+    transition: .8s;
+    transition-delay: 0.3s;
+    transition-timing-function: ease-out;
+  }
+}
+
+//上から下
+.act-view04 {
+  position: relative;
+  bottom: 50px;
+  opacity: 0;
+  transition: .8s;
+
+  &.fadeInTop {
+    bottom: 0;
+    opacity: 1;
+    transition: .8s;
+    transition-delay: 0.3s;
+    transition-timing-function: ease-out;
+  }
+}
+
+//その場から
+.act-view05 {
+  position: relative;
+  opacity: 0;
+  transition: .8s;
+
+  &.fadeInStay {
+    opacity: 1;
+    transition: .8s;
+    transition-delay: 0.3s;
+  }
+}
+
+// delay 調整
+.act-view01,
+.act-view02,
+.act-view03,
+.act-view04,
+.act-view05 {
+  &.delay03 {
+    transition-delay: 0.3s;
+  }
+
+  &.delay05 {
+    transition-delay: 0.5s;
+  }
+
+  &.delay07 {
+    transition-delay: 0.7s;
+  }
+
+  &.delay09 {
+    transition-delay: 0.9s;
+  }
+
+  &.delay11 {
+    transition-delay: 1.1s;
+  }
+
+  &.delay13 {
+    transition-delay: 1.3s;
+  }
+
+  &.delay15 {
+    transition-delay: 1.5s;
+  }
+
+  &.delay17 {
+    transition-delay: 1.7s;
+  }
+
+  &.delay19 {
+    transition-delay: 1.9s;
+  }
+
+  &.delay21 {
+    transition-delay: 2.1s;
+  }
+
+  &.delay23 {
+    transition-delay: 2.3s;
+  }
+}
+
+/*　ぼかし
+----------------------------------------------- */
+.is-blur {
+	opacity: 0;
+	transition: transform 0.5s linear;
+	animation-duration: 1.5s;
+	animation-fill-mode: both;
+	&.clear {
+		animation-name: blur;
+		opacity: 1;
+		transition: transform .8s;
+	}
+}
+
+/*　画像表示
+----------------------------------------------- */
+.is-square {
+	position: relative;
+	opacity: 0;
+  overflow: hidden;
+	&::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		// right: 0;
+		left: 0;
+		z-index: 1;
+		transition: 1s ease-in-out;
+		transition-delay: .3s;
+		background-color: rgba($color: $color-black, $alpha: .6);
+	}
+	&::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		background: $color-white;
+		transition: .5s ease-in-out;
+		transition-delay: .3s;
+	}
+	&.show {
+		opacity: 1;
+		&::before {
+			background-color: rgba($color: $color-black, $alpha: 0);
+		}
+		&::after {
+			width: 0;
+		}
+	}
+}

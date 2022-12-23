@@ -1,0 +1,618 @@
+@use "sass:math";
+@use "variables";
+
+//------------------------------------------
+//  before::after
+//------------------------------------------
+
+@mixin content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+}
+
+@mixin content100 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+@mixin contentX {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+}
+
+@mixin contentY {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  content: "";
+}
+
+@mixin content_center {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+
+@mixin content_center {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+
+@mixin content_center_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// filter
+@mixin filter($color) {
+  @include content100;
+  @include transition_s;
+  opacity: .12;
+  background: $color;
+}
+
+@mixin content_img($url) {
+  display: inline-block;
+  top: 0;
+  left: 0;
+  background-image: url($url);
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: baseline;
+  content: "";
+}
+
+
+
+//------------------------------------------
+//  arrow
+//------------------------------------------
+@mixin arrow_base {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+@mixin arrow_base_ab {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  vertical-align: middle;
+  content: "";
+}
+
+@mixin arrow_p_r_b {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  vertical-align: middle;
+  content: "";
+}
+
+@mixin arrow_up {
+  width: 0;
+  height: 0;
+  border-width: 0 1.46vw 2.53vw 1.46vw;
+  border-style: solid;
+  border-color: transparent transparent #ffffff transparent;
+}
+
+@mixin arrow_r {
+  @include w_size(10);
+  @include h_size(12);
+  @include borderLW(12);
+  border: 1.46vw solid transparent;
+  border-style: solid;
+  border-left-color: #ffffff;
+}
+
+@mixin arrow_r_bottom {
+  width: 0;
+  height: 0;
+  border-width: 0 0 2.92vw 2.92vw;
+  border-style: solid;
+  border-color: transparent transparent #ffffff transparent;
+}
+
+@mixin arrow_ku_r {
+  @include w_size(15);
+  @include h_size(15);
+          transform: rotate(45deg);
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+
+  -webkit-transform: rotate(45deg);
+}
+
+//------------------------------------------
+//  position
+//------------------------------------------
+
+@mixin top($top) {
+  top: calc($top / 6.83) + vw;
+}
+
+@mixin bottom($bottom) {
+  bottom: calc($bottom / 6.83) + vw;
+}
+
+@mixin left($left) {
+  left: calc($left / 6.83) + vw;
+}
+
+@mixin right($right) {
+  right: calc($right / 6.83) + vw;
+}
+
+//------------------------------------------
+//  border
+//------------------------------------------
+
+// @mixin borderTW($size) {
+//   border-top-width: $size / 6.83 + vw;
+// }
+
+// @mixin borderBW($size) {
+//   border-bottom-width: $size / 6.83 + vw;
+// }
+
+// @mixin borderLW($size) {
+//   border-left-width: $size / 6.83 + vw;
+// }
+
+// @mixin borderRW($size) {
+//   border-right-width: $size / 6.83 + vw;
+// }
+
+// @mixin borderXW($size) {
+//   border-right-width: $size / 6.83 + vw;
+//   border-left-width: $size / 6.83 + vw;
+// }
+
+// @mixin borderYW($size) {
+//   border-top-width: $size / 6.83 + vw;
+//   border-bottom-width: $size / 6.83 + vw;
+// }
+
+// @mixin border($size) {
+//   border-width: $size / 6.83 + vw;
+// }
+
+
+//------------------------------------------
+//  transition
+//------------------------------------------
+
+@mixin translateX($t-num) {
+  transform: translateX($t-num / 6.83 + vw);
+}
+@mixin translateY($t-num) {
+  transform: translateY($t-num / 6.83 + vw);
+}
+
+@mixin transition_s {
+  transition: all .3s ease-in-out;
+}
+
+@mixin transition_n {
+  transition: all .5s ease-in-out;
+}
+
+@mixin transition_q {
+  transition: all .7s ease-in-out;
+}
+
+//------------------------------------------
+//  size
+//------------------------------------------
+
+@mixin w_size($size) {
+  width: calc($size / 6.83) + vw;
+}
+
+@mixin h_size($size) {
+  height: calc($size / 6.83) + vw;
+}
+
+@mixin w-max_size($size) {
+  max-width: calc($size / 6.83) + vw;
+}
+
+@mixin h-max_size($size) {
+  max-height: calc($size / 6.83) + vw;
+}
+
+@mixin w-min_size($size) {
+  min-width: calc($size / 6.83) + vw;
+}
+
+@mixin h-min_size($size) {
+  min-height: calc($size / 6.83) + vw;
+}
+
+@mixin bdrs_size($size) {
+  border-radius: calc($size / 6.83) + vw;
+}
+
+@mixin bdrs_tl_size($size) {
+  border-top-left-radius: calc($size / 6.83) + vw;
+}
+
+@mixin bdrs_tr_size($size) {
+  border-top-right-radius: calc($size / 6.83) + vw;
+}
+
+@mixin bdrs_br_size($size) {
+  border-bottom-right-radius: calc($size / 6.83) + vw;
+}
+
+@mixin bdrs_bl_size($size) {
+  border-bottom-left-radius: calc($size / 6.83) + vw;
+}
+
+// @mixin col($size) {
+//   flex: 0 0 $size + %;
+//   min-width: $size + %;
+// }
+
+//------------------------------------------
+//  space
+//------------------------------------------
+
+// SP
+@mixin m($m-num) {
+  margin: calc($m-num / 6.83) + vw;
+}
+
+@mixin mt($mt-num) {
+  margin-top: calc($mt-num / 6.83) + vw;
+}
+
+@mixin mb($mb-num) {
+  margin-bottom: calc($mb-num / 6.83) + vw;
+}
+
+@mixin ml($ml-num) {
+  margin-left: calc($ml-num / 6.83) + vw;
+}
+
+@mixin mr($mr-num) {
+  margin-right: calc($mr-num / 6.83) + vw;
+}
+
+@mixin mx($mx-num) {
+  margin-right: calc($mx-num / 6.83) + vw;
+  margin-left: calc($mx-num / 6.83) + vw;
+}
+
+@mixin my($my-num) {
+  margin-top: calc($my-num / 6.83) + vw;
+  margin-bottom: calc($my-num / 6.83) + vw;
+}
+
+@mixin p($p-num) {
+  padding: calc($p-num / 6.83) + vw;
+}
+
+@mixin pt($pt-num) {
+  padding-top: calc($pt-num / 6.83) + vw;
+}
+
+@mixin pb($pb-num) {
+  padding-bottom: calc($pb-num / 6.83) + vw;
+}
+
+@mixin pl($pl-num) {
+  padding-left: calc($pl-num / 6.83) + vw;
+}
+
+@mixin pr($pr-num) {
+  padding-right: calc($pr-num / 6.83) + vw;
+}
+
+@mixin px($px-num) {
+  padding-right: calc($px-num / 6.83) + vw;
+  padding-left: calc($px-num / 6.83) + vw;
+}
+
+@mixin py($py-num) {
+  padding-top: calc($py-num / 6.83) + vw;
+  padding-bottom: calc($py-num / 6.83) + vw;
+}
+
+// PC
+@mixin margin-top($mt-num) {
+  margin-top: $mt-num + px;
+
+  @media screen and (max-width: variables.$break-md) {
+    $margin-top: math.round($mt-num * .6);
+
+    @if $margin-top < 20 {
+      $margin-top: 20px;
+    }
+
+    @else {
+      margin-top: $margin-top + px;
+    }
+  }
+}
+
+@mixin margin-bottom($mb-num) {
+  margin-bottom: $mb-num + px;
+
+  @media screen and (max-width: variables.$break-md) {
+    $margin-bottom: math.round($mb-num * .6);
+
+    @if $margin-bottom < 20 {
+      $margin-bottom: 20px;
+    }
+
+    @else {
+      margin-bottom: $margin-bottom + px;
+    }
+  }
+}
+
+@mixin margin-left($ml-num) {
+  margin-left: $ml-num + px;
+
+  @media screen and (max-width: variables.$break-md) {
+    $margin-left: math.round($ml-num * .6);
+
+    @if $margin-left < 20 {
+      $margin-left: 20px;
+    }
+
+    @else {
+      margin-left: $margin-left + px;
+    }
+  }
+}
+
+
+@mixin margin-right($mr-num) {
+  margin-right: $mr-num + px;
+
+  @media screen and (max-width: variables.$break-md) {
+    $margin-right: math.round($mr-num * .6);
+
+    @if $margin-right < 20 {
+      $margin-right: 20px;
+    }
+
+    @else {
+      margin-right: $margin-right + px;
+    }
+  }
+}
+
+//------------------------------------------
+//  float
+//------------------------------------------
+
+@mixin float-right($width) {
+  float: right;
+  width: $width;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: variables.$break-md) {
+    float: none;
+    width: 100%;
+  }
+}
+
+@mixin float-left($width) {
+  float: left;
+  width: $width;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: variables.$break-md) {
+    float: none;
+    width: 100%;
+  }
+}
+
+@mixin float-right-keep($width) {
+  float: right;
+  width: $width;
+  box-sizing: border-box;
+}
+
+@mixin float-left-keep($width) {
+  float: left;
+  width: $width;
+  box-sizing: border-box;
+}
+
+
+@mixin float-clear {
+  overflow: hidden;
+
+  zoom: 1;
+}
+
+
+//------------------------------------------
+//  font size
+//------------------------------------------
+// SP
+@mixin fontsizeVw($size) {
+  $winW: 700;
+  font-size: calc($size / $winW) * 100 + vw;
+}
+
+// PC
+@mixin fz($fz-size) {
+  font-size: $fz-size + px;
+  font-size: ($fz-size / 10) * 1rem;
+
+  @if $fz-size>20 {
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: variables.$break-md) {
+    $fontsize: math.round($fz-size * .9);
+
+    @if $fontsize < 15 {
+      font-size: 15px;
+      font-size: 1.5rem;
+    }
+
+    @else {
+      font-size: $fontsize + px;
+      font-size: ($fontsize / 10) * 1rem;
+    }
+  }
+}
+
+//------------------------------------------
+//  flex-box
+//------------------------------------------
+
+@mixin flex-around {
+  display: flex;
+  justify-content: space-around;
+
+  -js-display: flex;
+
+  @media only screen and (max-width: variables.$break-md) {
+    flex-direction: column;
+  }
+}
+
+@mixin flex-around-view {
+  display: flex;
+  justify-content: space-around;
+
+  -js-display: flex;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+
+  -js-display: flex;
+
+  @media only screen and (max-width: variables.$break-md) {
+    flex-direction: column;
+  }
+}
+
+@mixin flex-between-keep {
+  display: flex;
+  justify-content: space-between;
+
+  -js-display: flex;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+
+  -js-display: flex;
+  webkit-box-pack: start;
+
+  @media only screen and (max-width: variables.$break-md) {
+    flex-direction: column;
+  }
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: flex-end;
+
+  -js-display: flex;
+
+  @media only screen and (max-width: variables.$break-md) {
+    flex-direction: column;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+
+  -js-display: flex;
+
+  @media only screen and (max-width: variables.$break-md) {
+    flex-direction: column;
+  }
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+
+  @media only screen and (max-width: variables.$break-md) {
+    display: block;
+  }
+}
+
+//------------------------------------------
+//  other
+//------------------------------------------
+
+
+@mixin clearfix {
+  zoom: 1;
+
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+/*　line-heightで出来るスペースを消す
+----------------------------------------------- */
+@mixin lineHeightSpaceFill($line-height) {
+  &::before, &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+  &::before {
+    margin-top: calc((1 - #{$line-height}) * .5em);
+  }
+  &::after {
+    margin-bottom: calc((1 - #{$line-height}) * .5em);
+  }
+}

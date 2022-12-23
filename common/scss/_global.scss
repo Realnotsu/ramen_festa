@@ -1,0 +1,71 @@
+// Global styling for this template
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  color: $black;
+  font-family: shippori-mincho, sans-serif;
+  font-size: 14px;
+}
+h2 {
+  text-align: center;
+  font-family: shippori-mincho, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+}
+h3 {
+  font-family: shippori-mincho, sans-serif;
+}
+h4 {
+  width: 100%;
+  padding-top: 30px;
+  text-align: center;
+  font-family: shippori-mincho, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  i {
+    padding-right: 15px;
+    color: #2a4d88;
+  }
+}
+h5 {
+  font-family: shippori-mincho, sans-serif;
+}
+.sub {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+  font-family: shippori-mincho, sans-serif;
+}
+a {
+  font-family: shippori-mincho, sans-serif;
+  font-size: 14px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+p {
+  font-family: shippori-mincho, sans-serif;
+}
+small {
+  font-family: shippori-mincho, sans-serif;
+}
+span {
+  font-family: shippori-mincho, sans-serif;
+}
+div {
+  font-family: shippori-mincho, sans-serif;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.red {
+  color: #a70719;
+}
